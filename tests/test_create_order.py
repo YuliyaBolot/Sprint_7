@@ -3,6 +3,7 @@ import allure
 import random
 import json
 import pytest
+from constans import Constants
 from faker import Faker
 
 faker = Faker()
@@ -25,5 +26,5 @@ class TestOrder:
                     ]
         }
         payload_string = json.dumps(payload)
-        response = requests.post('https://qa-scooter.praktikum-services.ru/api/v1/orders', data=payload_string)
+        response = requests.post(Constants.url_order, data=payload_string)
         assert "track" in response.text
